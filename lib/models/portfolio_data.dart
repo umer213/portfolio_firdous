@@ -1,9 +1,9 @@
 class PortfolioData {
-  static const String name = 'Umar Bashir';
-  static const String title = 'Flutter Developer';
+  static const String name = 'Firdous Rasool';
+  static const String title = 'Ios Developer';
   static const String location = 'India';
-  static const String phone = '+91 9149644741';
-  static const String email = 'ahmedumer1321@gmail.com';
+  static const String phone = '+91 7006777927 ';
+  static const String email = 'cruzdar@gmail.com';
   static const String linkedIn = 'https://linkedin.com/in/ahmed-umer-4b232a240';
 
   static const String profileDescription =

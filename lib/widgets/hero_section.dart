@@ -133,7 +133,7 @@ class _HeroSectionState extends State<HeroSection>
 
                   StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
-                        .collection('personal_info')
+                        .collection('Personal Info')
                         .snapshots(),
                     builder: (context, snapshot) {
                       String displayName = PortfolioData.name;
@@ -361,7 +361,7 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   Future<void> _downloadResume() async {
-    const resumePath = 'assets/umer_Resume.pdf';
+    const resumePath = 'assets/FirdousCV.pdf';
     try {
       await downloadResume(resumePath);
     } catch (e) {

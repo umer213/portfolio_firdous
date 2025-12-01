@@ -22,15 +22,12 @@ class ProjectsSection extends StatefulWidget {
 }
 
 class _ProjectsSectionState extends State<ProjectsSection> {
-  late Future<DocumentSnapshot> _projectsFuture;
+  late Future<QuerySnapshot> _projectsFuture;
 
   @override
   void initState() {
     super.initState();
-    _projectsFuture = FirebaseFirestore.instance
-        .collection('projects')
-        .doc('my_projects')
-        .get();
+    _projectsFuture = FirebaseFirestore.instance.collection('projects').get();
   }
 
   @override
@@ -54,7 +51,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             children: [
               _buildSectionHeader(context),
               const SizedBox(height: 50),
-              FutureBuilder<DocumentSnapshot>(
+              FutureBuilder<QuerySnapshot>(
                 future: _projectsFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -65,11 +62,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     );
                   }
 
-                  if (!snapshot.hasData || !snapshot.data!.exists) {
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return _buildEmptyState('No projects available');
                   }
 
-                  final data = snapshot.data!.data() as Map<String, dynamic>;
+                  final data =
+                      snapshot.data!.docs.first.data() as Map<String, dynamic>;
                   final projectsList = data['projects'] as List<dynamic>;
 
                   final projects = projectsList

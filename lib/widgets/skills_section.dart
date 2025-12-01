@@ -28,7 +28,7 @@ class SkillsSection extends StatelessWidget {
       ),
       child: StreamBuilder(
         stream:
-            FirebaseFirestore.instance.collection('personal_info').snapshots(),
+            FirebaseFirestore.instance.collection('Personal Info').snapshots(),
         builder: (context, snapshot) {
           List<String> skills = [];
           if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {

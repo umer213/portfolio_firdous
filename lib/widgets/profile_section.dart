@@ -41,7 +41,7 @@ class ProfileSection extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           color: ProfessionalTheme.electricBlue.withValues(
-                          alpha:   0.3,
+                            alpha: 0.3,
                           ),
                           blurRadius: 20,
                           spreadRadius: 2,
@@ -72,7 +72,7 @@ class ProfileSection extends StatelessWidget {
               // Bio card
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                    .collection('personal_info')
+                    .collection('Personal Info')
                     .snapshots(),
                 builder: (context, snapshot) {
                   String bio = PortfolioData.profileDescription;

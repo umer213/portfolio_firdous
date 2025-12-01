@@ -3,16 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'screens/parallax_portfolio_screen.dart';
 import 'theme/professional_theme.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyDu5l2f7KUrvTX-z8bIeMeig3ARZRpcxFE",
-        authDomain: "myportfolio-358c3.firebaseapp.com",
-        projectId: "myportfolio-358c3",
-        storageBucket: "myportfolio-358c3.firebasestorage.app",
-        messagingSenderId: "99208627923",
-        appId: "1:99208627923:web:a11d68ccc06ce2f3623626"),
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const PortfolioApp());
 }

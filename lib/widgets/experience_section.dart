@@ -19,15 +19,13 @@ class ExperienceSection extends StatefulWidget {
 }
 
 class _ExperienceSectionState extends State<ExperienceSection> {
-  late Future<DocumentSnapshot> _experienceFuture;
+  late Future<QuerySnapshot> _experienceFuture;
 
   @override
   void initState() {
     super.initState();
-    _experienceFuture = FirebaseFirestore.instance
-        .collection('workExperience')
-        .doc('experience')
-        .get();
+    _experienceFuture =
+        FirebaseFirestore.instance.collection('workExperience').get();
   }
 
   @override
@@ -51,7 +49,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
             children: [
               _buildSectionHeader(context, Icons.work_outline, 'Experience'),
               const SizedBox(height: 50),
-              FutureBuilder<DocumentSnapshot>(
+              FutureBuilder<QuerySnapshot>(
                 future: _experienceFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -62,11 +60,12 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                     );
                   }
 
-                  if (!snapshot.hasData || !snapshot.data!.exists) {
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return _buildEmptyState('No experience data available');
                   }
 
-                  final data = snapshot.data!.data() as Map<String, dynamic>;
+                  final data =
+                      snapshot.data!.docs.first.data() as Map<String, dynamic>;
                   final experienceList = data['experience'] as List<dynamic>;
 
                   final experiences = experienceList

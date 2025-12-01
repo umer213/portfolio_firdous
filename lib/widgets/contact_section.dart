@@ -21,7 +21,7 @@ class ContactSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream:
-          FirebaseFirestore.instance.collection('personal_info').snapshots(),
+          FirebaseFirestore.instance.collection('Personal Info').snapshots(),
       builder: (context, snap) {
         String phone = PortfolioData.phone;
         String email = PortfolioData.email;
